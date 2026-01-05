@@ -1,16 +1,16 @@
 # Analyze Call Recordings with OpenAI and Update Zoho CRM Leads Automatically
 
-This workflow automatically processes customer call recordings, transcribes them using OpenAI Whisper, extracts key topics, sentiment, commitments, and follow-up suggestions, and updates the corresponding **Zoho CRM Lead** with structured insights — all without manual intervention. :contentReference[oaicite:1]{index=1}
+This workflow automatically processes customer call recordings, transcribes them using **OpenAI Whisper**, extracts key topics, sentiment, commitments, and follow-up suggestions, and updates the corresponding **Zoho CRM Lead** with structured insights — all without manual intervention.
 
 ---
 
 ## Quick Start (Fast Setup)
 
-- Import the workflow JSON into your n8n instance.
-- Add Zoho CRM OAuth2 & OpenAI API credentials.
-- Copy the webhook URL and configure your telephony system to POST call recordings.
-- Map Zoho custom fields for insights.
-- Upload a test recording → confirm CRM updates → activate workflow. :contentReference[oaicite:2]{index=2}
+* Import the workflow JSON into your n8n instance
+* Add **Zoho CRM OAuth2** and **OpenAI API** credentials
+* Copy the webhook URL and configure your telephony system to POST call recordings
+* Map Zoho custom fields for AI insights
+* Upload a test recording → confirm CRM updates → activate the workflow
 
 ---
 
@@ -18,24 +18,24 @@ This workflow automatically processes customer call recordings, transcribes them
 
 When a call recording is received via webhook, this workflow:
 
-1. Transcribes audio using OpenAI Whisper.
-2. Extracts key topics, main subject, and action items.
-3. Analyzes sentiment and mood.
-4. Detects commitments made during the call.
-5. Generates follow-up suggestions.
-6. Combines all insights and updates the matching **Zoho CRM Lead** with AI-generated intelligence. :contentReference[oaicite:3]{index=3}
+1. Transcribes audio using OpenAI Whisper
+2. Extracts key topics, main subject, and action items
+3. Analyzes sentiment and customer mood
+4. Detects commitments made during the call
+5. Generates follow-up suggestions
+6. Updates the matching **Zoho CRM Lead** with AI-generated insights
 
-This replaces manual call review and equips sales and support teams with ready-to-use summaries instantly. :contentReference[oaicite:4]{index=4}
+This replaces manual call reviews and gives sales and support teams instant, actionable summaries.
 
 ---
 
 ## Who’s It For
 
-- Sales & customer support teams using Zoho CRM.
-- Support teams handling inbound/outbound calls.
-- Businesses seeking call analytics without manual effort.
-- Zoho CRM admins wanting automated enrichment.
-- Teams using telephony/VoIP systems that can POST audio files. :contentReference[oaicite:5]{index=5}
+* Sales and customer support teams using Zoho CRM
+* Teams handling inbound or outbound calls
+* Businesses needing call analytics without manual review
+* Zoho CRM admins looking for automated lead enrichment
+* Teams using telephony/VoIP systems that can POST audio files
 
 ---
 
@@ -43,50 +43,51 @@ This replaces manual call review and equips sales and support teams with ready-t
 
 To use this workflow, you need:
 
-- An n8n instance (cloud or self-hosted).
-- Zoho CRM OAuth2 credentials.
-- OpenAI API key (for Whisper and GPT models).
-- A telephony system capable of sending audio files to a webhook.
-- Zoho custom CRM fields to store:
-  - Topics
-  - Main subject
-  - Action items
-  - Sentiment
-  - Mood
-  - Follow-up text
-  - Commitments (optional) :contentReference[oaicite:6]{index=6}
+* n8n (cloud or self-hosted)
+* Zoho CRM OAuth2 credentials
+* OpenAI API key (Whisper + GPT models)
+* A telephony system that can send audio files to a webhook
+* Zoho CRM custom fields for:
+
+  * Topics
+  * Main subject
+  * Action items
+  * Sentiment
+  * Mood
+  * Follow-up suggestions
+  * Commitments (optional)
 
 ---
 
-## How It Works & How to Set Up
+## How It Works & Setup Flow
 
 ### 1. Webhook Trigger
 
-Your telephony app posts audio (.mp3, .wav) to n8n’s webhook. The workflow starts instantly (no polling). :contentReference[oaicite:7]{index=7}
+Your telephony system posts audio files (`.mp3`, `.wav`) to the n8n webhook, instantly triggering the workflow.
 
 ### 2. Audio Transcription (OpenAI Whisper)
 
-The recording is transcribed into text. This transcript becomes the basis for all analysis. :contentReference[oaicite:8]{index=8}
+The call recording is converted into text, forming the base for all further analysis.
 
-### 3. Key Topic & Subject Extraction
+### 3. Topic & Subject Extraction
 
-AI extracts important topics, the main subject, and action items discussed in the call. :contentReference[oaicite:9]{index=9}
+AI identifies key discussion topics, the primary subject, and action items.
 
 ### 4. Sentiment & Mood Analysis
 
-AI analyzes overall sentiment, customer mood, and assigns a sentiment score. :contentReference[oaicite:10]{index=10}
+AI evaluates overall sentiment and customer mood.
 
-### 5. Commitment Extraction
+### 5. Commitment Detection
 
-AI detects mentions of commitments using a structured schema. :contentReference[oaicite:11]{index=11}
+Structured AI analysis detects promises or commitments made during the call.
 
 ### 6. Follow-up Suggestions
 
-GPT generates a list of 3-5 actionable suggestions for the sales rep. :contentReference[oaicite:12]{index=12}
+GPT generates 3–5 actionable next steps for the sales or support rep.
 
-### 7. Combine Insights & Update CRM
+### 7. Update Zoho CRM Lead
 
-All extracted insights are merged and written into Zoho CRM Lead custom fields. :contentReference[oaicite:13]{index=13}
+All extracted insights are merged and written into Zoho CRM Lead custom fields.
 
 ---
 
@@ -94,64 +95,68 @@ All extracted insights are merged and written into Zoho CRM Lead custom fields. 
 
 ### Transcription
 
-- Switch to another Whisper/gpt model.
-- Add language or multi-language support. :contentReference[oaicite:14]{index=14}
+* Switch Whisper or GPT models
+* Enable multilingual transcription
 
 ### Topic Extraction
 
-- Add attributes like risks, objections, intent. :contentReference[oaicite:15]{index=15}
+* Add intent, objections, or risk detection
 
 ### Sentiment Analysis
 
-- Tune thresholds (e.g., sentimentThreshold).
-- Add more emotion labels. :contentReference[oaicite:16]{index=16}
+* Adjust sentiment thresholds
+* Add custom emotion labels
 
 ### Commitment Extraction
 
-- Modify schema to pull more detailed commitments.
-- Filter by confidence level. :contentReference[oaicite:17]{index=17}
+* Expand schema for detailed commitments
+* Filter by confidence or certainty
 
 ### CRM Update
 
-- Map insights to other fields.
-- Append notes instead of overwrite. :contentReference[oaicite:18]{index=18}
+* Append insights as notes instead of overwriting fields
+* Map insights to additional Zoho modules
 
 ---
 
-## Add-Ons (Optional Enhancements)
+## Optional Add-Ons
 
-- Slack/Teams alerts for negative sentiment.
-- Email transcripts or summaries to teams.
-- Save recordings to Google Drive / S3.
-- Create Zoho tasks from commitments.
-- Multi-language transcription support.
-- Sales rep performance scoring dashboards. :contentReference[oaicite:19]{index=19}
+* Slack or Microsoft Teams alerts for negative sentiment
+* Email transcripts or summaries automatically
+* Save recordings to Google Drive or Amazon S3
+* Auto-create Zoho tasks from commitments
+* Multilingual call analysis
+* Sales rep performance dashboards
 
 ---
 
 ## Use Case Examples
 
-- **Sales call analysis** – auto-summarize calls and generate follow-ups.
-- **Support hotline monitoring** – detect frustrated customers.
-- **QA audits** – auto-generate evaluation notes.
-- **Voice-to-CRM logging** – store structured conversation data.
-- **Compliance tracking** – capture legally relevant commitments. :contentReference[oaicite:20]{index=20}
+* **Sales call analysis** – automatic summaries and follow-ups
+* **Support monitoring** – detect unhappy or frustrated customers
+* **QA audits** – auto-generated evaluation notes
+* **Voice-to-CRM logging** – structured conversation storage
+* **Compliance tracking** – capture legally relevant commitments
 
 ---
 
 ## Common Troubleshooting
 
-| Issue                  | Possible Cause                   | Solution                          |
-| ---------------------- | -------------------------------- | --------------------------------- | --------------------------------------- |
-| Workflow not triggered | Telephony not posting to webhook | Verify webhook URL & payload logs |
-| Transcript empty       | Corrupted or unsupported audio   | Validate file format & size       |
-| CRM not updating       | Wrong Zoho field IDs             | Check Zoho custom field IDs       |
-| Commitments missing    | Poor transcript clarity          | Improve audio quality or schema   |
-| Sentiment inaccurate   | Threshold too low                | Adjust sentimentThreshold         | :contentReference[oaicite:21]{index=21} |
+| Issue                  | Possible Cause                   | Solution                                  |
+| ---------------------- | -------------------------------- | ----------------------------------------- |
+| Workflow not triggered | Telephony not posting to webhook | Verify webhook URL and request logs       |
+| Transcript empty       | Corrupted or unsupported audio   | Check audio format and file size          |
+| CRM not updating       | Incorrect Zoho field IDs         | Verify Zoho custom field API names        |
+| Commitments missing    | Poor transcript quality          | Improve audio clarity or adjust AI schema |
+| Sentiment inaccurate   | Threshold too low                | Tune sentiment thresholds in AI node      |
 
 ---
 
 ## Need Help?
 
-If you want to customize this workflow, integrate your telephony system, or build advanced CRM automations, our **n8n workflow development team at WeblineIndia** is happy to assist.  
-We can help with setup, scaling, enhancements, and enterprise-grade automation support. :contentReference[oaicite:22]{index=22}
+If you want to customize this workflow, integrate your telephony system, or build advanced CRM automations, our **n8n workflow experts at WeblineIndia** can help with:
+
+* End-to-end setup
+* Custom AI tuning
+* Scaling and performance optimization
+* Enterprise-grade automation solutions
